@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
 import './App.css';
-import Controller from './Controller';
-// import * as d3 from 'd3';
-// import axios from 'axios';
+import Controller from './graph/components/Controller';
+
 
 
 class App extends Component {
@@ -13,7 +11,12 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Topology POC</h1>
         </header>
-        <Controller />
+        <main className={'app-content'}>
+          <Controller />
+        </main>
+        <footer className="App-footer">
+          <h3 className="App-footer-text">This is a footer</h3>
+        </footer>
       </div>
     );
   }

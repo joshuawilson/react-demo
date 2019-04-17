@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, {useEffect} from 'react';
 import * as d3 from 'd3';
 import * as webcola from 'webcola';
 
-/*
 const Graph = (props) => {
   useEffect(() => {
     // d3.select('.topo > *').remove();
@@ -10,24 +9,14 @@ const Graph = (props) => {
   });
   return <div className="topo"/>
 };
-*/
-
-export default class Graph extends Component {
-  componentDidMount() {
-    draw(this.props);
-  }
-  componentDidUpdate() {
-    draw(this.props);
-  }
-  render() {
-    return (
-      <div className="topo"/>
-    )
-  }
-}
 
 const draw = (props) => {
 
+  const links = props.graph.links.map(d => Object.create(d));
+  const nodes = props.graph.nodes.map(d => Object.create(d));
+
+  // const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  // const height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
   const width = props.width;
   const height = props.height;
 
@@ -42,6 +31,69 @@ const draw = (props) => {
   const svg = d3.select(".topo").append("svg")
     .attr("width", width)
     .attr("height", height);
+
+
+
+/*
+  const zoom = d3.zoom()
+    .scaleExtent([1, 40])
+    .translateExtent([[-100, -100], [width + 90, height + 100]])
+    .on("zoom", zoomed);
+
+  const x = d3.scaleLinear()
+    .domain([-1, width + 1])
+    .range([-1, width + 1]);
+
+  const y = d3.scaleLinear()
+    .domain([-1, height + 1])
+    .range([-1, height + 1]);
+
+  const xAxis = d3.axisBottom(x)
+    .ticks((width + 2) / (height + 2) * 10)
+    .tickSize(height)
+    .tickPadding(8 - height);
+
+  const yAxis = d3.axisRight(y)
+    .ticks(10)
+    .tickSize(width)
+    .tickPadding(8 - width);
+
+  const view = svg.append("rect")
+    .attr("class", "view")
+    .attr("x", 0.5)
+    .attr("y", 0.5)
+    .attr("width", width - 1)
+    .attr("height", height - 1);
+
+  const gX = svg.append("g")
+    .attr("class", "axis axis--x")
+    .call(xAxis);
+
+  const gY = svg.append("g")
+    .attr("class", "axis axis--y")
+    .call(yAxis);
+
+  d3.select("button")
+    .on("click", resetted);
+
+  svg.call(zoom);
+
+  function zoomed() {
+    view.attr("transform", d3.event.transform);
+    gX.call(xAxis.scale(d3.event.transform.rescaleX(x)));
+    gY.call(yAxis.scale(d3.event.transform.rescaleY(y)));
+  }
+
+  function resetted() {
+    svg.transition()
+      .duration(750)
+      .call(zoom.transform, d3.zoomIdentity);
+  }
+*/
+
+
+
+
 
   const graph = props.graph;
 
@@ -119,3 +171,5 @@ const draw = (props) => {
       });
   });
 };
+
+export default Graph;

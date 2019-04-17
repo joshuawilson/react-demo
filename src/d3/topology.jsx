@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 
 const Graph = (props) => {
   useEffect(() => {
-    d3.select('.topo > *').remove();
+    // d3.select('.topo > *').remove();
     draw(props)
   });
   return <div className="topo" />

@@ -1,7 +1,15 @@
+.App {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
 .App-header {
   background-color: #D3D3D3;
   padding: 20px;
   color: #727171;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
 .App-title {
@@ -10,4 +18,25 @@
 
 .App-intro {
   font-size: large;
+}
+
+.App-footer {
+  background-color: #D3D3D3;
+  padding: 20px;
+  color: #727171;
+}
+
+.App-footer-text {
+  font-size: 1.5em;
+}
+
+.app-content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: hidden;
+}
+
+footer {
+  flex-grow: 0;
+  flex-shrink: 0;
 }
